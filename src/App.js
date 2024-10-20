@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  let [number, setNumber] = useState(0);
+  let [name, setName] = useState("avin");
+  let [myState, setMyState] = useState(false);
+  let [fav, setFav] = useState(["book", "driving", "swimming"]);
+  let [obj, setObj] = useState({ myName: "avin", myAge: 35 });
+
+  const clickHandler = () => {
+    setNumber(number + 1);
+    setName("avin esmaeili");
+    setMyState(true);
+    // setFav(fav.push('elmi'))
+    setFav(fav.concat("football"));
+    // setFav([...fav, "football"]);
+    // setObj({...obj , family: 'es' , gender : 'female'})
+    setObj({ ...obj, myName: "sali" });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h2>
+        {number}-{name}-{myState.toString()}-{fav + ""}-{obj.myName}
+      </h2>
+      {/* <button onClick={clickHandler}>increase</button> */}
+      <button onClick={clickHandler}>change state</button>
+    </>
   );
 }
-
 export default App;
